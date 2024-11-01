@@ -12,10 +12,11 @@
   opacity: 1; /* делаем элемент видимым, если необходимо скрыть - используйте 0 */
   
 }
-
-
-
-
+.loader-container {
+  animation: spin 1s linear infinite; /* Добавление анимации вращения */
+  top: 50%;
+  left: 50%;
+}
 
 
  .loader {
@@ -25,12 +26,28 @@
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
+    width: 100%; /* Ширина должна быть 100%, чтобы заполнить контейнер */
+    height: 100%;
+    animation: spin 1s linear infinite;
+    top: 50%;
+    left: 50%;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   
   .container{
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 50%;
+  left: 50%;
   }
 
 
