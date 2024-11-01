@@ -8,6 +8,8 @@ import Text from '../../components/Text';
 import Button from '../../components/Button';
 import ArrowDownIcon from '../../components/icons/ArrowDownIcon';
 import '../../App.css';
+import 'components/Button';
+import 'components/Input'
 
 interface Product {
   id: number;
