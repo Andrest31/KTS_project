@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import './Button.css';
+import styles from './Button.module.scss'; 
 import Text from '../Text/Text';
 import Loader from '../Loader/Loader';
 
@@ -20,14 +20,14 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false, 
   children, 
   className, 
-  height= '52px',
+  height = '52px',
   width = '155px', 
   ...props 
 }) => {
   // Используем classNames для управления классами кнопки
-  const buttonClass = classNames('button', className, {
-    'button-loading': loading, // класс для состояния загрузки
-    'button-disabled': disabled, // добавляем класс для заблокированной кнопки
+  const buttonClass = classNames(styles.button, className, {
+    [styles.button_loading]: loading, // класс для состояния загрузки
+    [styles.button_disabled]: disabled, // добавляем класс для заблокированной кнопки
   });
 
   // Рендерим текст кнопки
@@ -41,7 +41,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={buttonClass}
       disabled={loading || disabled} // Заблокируем кнопку при loading или disabled
-      style={{ width, height}} // Устанавливаем ширину кнопки через инлайн-стиль
+      style={{ width, height }} // Устанавливаем ширину кнопки через инлайн-стиль
       {...props} 
     >
       {loading ? (

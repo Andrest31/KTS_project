@@ -27,7 +27,6 @@ height: 1346px;
     justify-content: space-between;
     width: 129px;
     height: 48px;
-    cursor: pointer;
     text-align: start;
 }
 
@@ -49,17 +48,6 @@ height: 1346px;
 
 }
 
-.related-products{
-
-}
-
-
-/* .product__title{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-
-} */
 
 
 .product__text-container{
@@ -88,14 +76,8 @@ height: 1346px;
 
 
 
-/* Основные стили страницы продукта */
-.ProductPage {
-    padding: 230px 270px 0px 270px;
-    font-family: Arial, sans-serif;
-    color: #333;
-    background-color: var(--font);
-  }
-  .ProductContentWrapper {
+
+  .product__wrapper {
     padding-top: var(--space-xxl);
     display: flex;
     gap: var(--space-xxl);
@@ -105,23 +87,22 @@ height: 1346px;
   }
   
 
-  
-  .ImageSlider {
+  .product__image-slider {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.slider-button {
+.product__slider-button {
     position: absolute;
     width: 64px;
     height: 64px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 1);
-    color: white;
+    background: var(--primary);
+    color: var(--base);
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -131,23 +112,23 @@ height: 1346px;
 }
 
 .slider-button-left {
-    left: 24px; /* Отступ слева */
+    left: var(--space-xl); 
 }
 
 .slider-button-right {
-    right: 24px; /* Отступ справа */
+    right: var(--space-xl); 
 }
 
-.slider-button.disabled {
-    opacity: 0.6; /* 60% прозрачности */
+.product__slider-button.disabled {
+    opacity: 0.6; 
 }
 
-.ProductImage {
+
+  
+  .product__image {
     flex: 0 0 auto;
     min-width: 600px;
-    max-width: 100%;
-}
-
+  }
   
   
   
@@ -183,70 +164,4 @@ height: 1346px;
 
 
   
-  .BuyNowButton,
-  .AddToCartButton {
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  .BuyNowButton {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .AddToCartButton {
-    background-color: #ddd;
-    color: black;
-    transition: background-color 0.3s;
-  }
-  
-  .AddToCartButton:hover {
-    background-color: #bbb;
-  }
-  
-  /* Стили для секции похожих товаров */
-  .RelatedItems {
-    margin-top: 40px;
-  }
-  
-  .RelatedItems h2 {
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .RelatedItemsGrid {
-    display: flex;
-    gap: 80px;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-bottom: 200px;
-  }
  
-
-  
-
-  
-  .RelatedItemCard:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  
-  .RelatedItemCard .AddToCartButton {
-    width: 100%;
-    background-color: #ddd;
-    color: black;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .RelatedItemCard .AddToCartButton:hover {
-    background-color: #bbb;
-  }
-  

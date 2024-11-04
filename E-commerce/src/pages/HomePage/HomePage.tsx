@@ -6,9 +6,11 @@ import Input from 'components/Input';
 import Button from 'components/Button';
 import MultiDropdown from 'components/MultiDropdown';
 import Card from 'components/Card';
-import PaginationIcon from 'components/PaginationIcon/PaginationIcon';
+import ArrowSiteIcon from 'components/icons/ArrowSite/ArrowSite';
 import { useNavigate } from 'react-router-dom';
 import { handleCardClick } from 'utils/navigationUtils';
+import styles from './HomePage.module.scss';
+import '../../styles/styles.scss'
 
 export interface ProductI {
   id: number;
@@ -30,7 +32,6 @@ const HomePage: React.FC = () => {
   const productsPerPage = 9;
   const totalPages = Math.ceil(totalProducts / productsPerPage);
 
-  // Получение данных из API
   const fetchProducts = async (page: number) => {
     setLoading(true);
     try {
@@ -56,60 +57,53 @@ const HomePage: React.FC = () => {
     setCurrentPage(page);
   };
 
-  // Функция для формирования диапазона страниц
   const getPaginationRange = () => {
     const range: (number | string)[] = [];
-
     if (totalPages <= 5) {
-      // Если страниц немного, отображаем их все
       for (let i = 1; i <= totalPages; i++) range.push(i);
     } else {
       if (currentPage <= 3) {
-        // Если текущая страница 1, 2 или 3, показываем 1 2 3 ... последняя страница
         range.push(1, 2, 3, '...', totalPages);
       } else if (currentPage < totalPages - 2) {
-        // Если текущая страница не ближе к началу или концу, показываем 1 ... текущая страница ... последняя страница
         range.push(1, '...', currentPage, '...', totalPages);
       } else {
-        // Если текущая страница ближе к концу, показываем 1 ... последние 3 страницы
         range.push(1, '...', totalPages - 2, totalPages - 1, totalPages);
       }
     }
-
     return range;
   };
 
-  if (loading) return <Loader />;
-  if (error) return <div className="error-message">{error}</div>;
+  if (loading) return (
+    <main className='page'>
+      <div className='page__loader _container'>
+        <Loader />
+      </div>
+      </main>
+  );
+  if (error) return <div className={styles['error-message']}>{error}</div>;
 
   return (
-    <main id="main" className="page">
-      <div className="page__main-block _container">
-        <div className="products-content">
-          <div className="products__header">
-            <div className="products__title">
-              <Text className="text-title">Products</Text>
+    <main id="main" className='page'>
+      <div className={`${styles['page__main-block']} _container`}>
+        <div className={styles['products__content']}>
+          <div className={styles['products__header']}>
+            <div className={styles['products__title']}>
+              <Text view="title">Products</Text>
             </div>
-            <div className="products__description">
+            <div className={styles['products__description']}>
               <Text view="p-20" color="secondary">
                 We display products based on the latest products we have. If you want to see our old products, please enter the name of the item.
               </Text>
             </div>
           </div>
-
-          <div className="products__controls">
-            <div className="products__search">
-              <div className="products__search-column--left">
-                <Input
-                  value={searchValue}
-                  onChange={setSearchValue}
-                  placeholder="Search product"
-                />
+          <div className={styles['products__controls']}>
+            <div className={styles['products__search']}>
+              <div className={styles['products__search-column--left']}>
+                <Input value={searchValue} onChange={setSearchValue} placeholder="Search product" />
               </div>
-              <Button className="products__search-column--right">Find now</Button>
+              <Button  width='137px' className={styles['products__search-column--right']}>Find now</Button>
             </div>
-
-            <div className="products__filter">
+            <div className={styles['products__filter']}>
               <MultiDropdown
                 options={[{ key: '1', value: 'Furniture' }, { key: '2', value: 'Electronics' }]}
                 value={[]}
@@ -118,20 +112,14 @@ const HomePage: React.FC = () => {
               />
             </div>
           </div>
-
-          <div className="products__body">
-            <div className="products__subtitle">
-              <Text view="p-32" className="page-title" weight="bold">
-                Total Products
-              </Text>
-              <Text view="p-20" color="accent" weight="bold">
-                {totalProducts}
-              </Text>
+          <div className={styles['products__body']}>
+            <div className={styles['products__subtitle']}>
+              <Text view="p-32" className="page-title" weight="bold">Total Products</Text>
+              <Text view="p-20" color="accent" weight="bold">{totalProducts}</Text>
             </div>
-
-            <section className="products__cards _cards">
+            <section className={`${styles['products__cards']} _cards`}>
               {products.map((product) => (
-                <div className="products__column" key={product.id}>
+                <div className={styles['products__column']} key={product.id}>
                   <Card
                     image={product.images[0]}
                     title={product.title}
@@ -139,24 +127,24 @@ const HomePage: React.FC = () => {
                     captionSlot={product.category.name}
                     contentSlot={`$${product.price}`}
                     actionSlot={<Button>Add to Cart</Button>}
-                    className="products__card"
+                    className={styles['products__card']}
                     onClick={() => handleCardClick(product, products, navigate)}
                   />
                 </div>
               ))}
             </section>
           </div>
-          <div className="products__pagination">
+          <div className={styles['products__pagination']}>
             <div onClick={() => handlePageChange(currentPage > 1 ? currentPage - 1 : 1)}>
-              <PaginationIcon color="secondary" />
+              <ArrowSiteIcon color={currentPage > 1 ? 'primary' : 'secondary'} />
             </div>
-            <div className="products__pagination-buttons">
+            <div className={styles['products__pagination-buttons']}>
               {getPaginationRange().map((page, index) => (
                 <Button
                   key={index}
                   width={38}
                   height={42}
-                  className={`pagination-button ${page === currentPage ? 'active-page' : ''}`}
+                  className={`${styles['pagination-button']} ${page === currentPage ? styles['active-page'] : ''}`}
                   onClick={() => typeof page === 'number' && handlePageChange(page)}
                 >
                   {page}
@@ -164,7 +152,7 @@ const HomePage: React.FC = () => {
               ))}
             </div>
             <div onClick={() => handlePageChange(currentPage < totalPages ? currentPage + 1 : totalPages)}>
-              <PaginationIcon direction="right" />
+              <ArrowSiteIcon direction="right" color={currentPage + 1 <= totalPages ? 'primary' : 'secondary'} />
             </div>
           </div>
         </div>

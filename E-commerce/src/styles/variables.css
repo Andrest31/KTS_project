@@ -5,8 +5,10 @@
 
 
     
-    --primary: rgba(0, 0, 0, 1);   /* Пример цвета для primary */
-    --secondary: rgba(175, 173, 181, 1); /* Пример цвета для secondary */
+    --primary: rgba(0, 0, 0, 1);  
+    --secondary: rgba(175, 173, 181, 1); 
+    --base:rgba(255, 255, 255, 1);
+    
     --disabled: #c3c3c3;
     --accent: rgba(81, 133, 129, 1);   
 

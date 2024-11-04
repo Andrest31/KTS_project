@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Basket = () => {
+const Cart = () => {
     return (
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.375 9.58751V8.37501C9.375 5.56251 11.6375 2.80001 14.45 2.53751C17.8 2.21251 20.625 4.85001 20.625 8.13751V9.86251" stroke="#151411" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -12,4 +12,4 @@ const Basket = () => {
     );
 };
 
-export default Basket;
+export default Cart;

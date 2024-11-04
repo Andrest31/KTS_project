@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './MultiDropDown.css';
+import styles from './MultiDropdown.module.scss';
 import Input from '../Input/Input';
 import Text from '../Text/Text'; 
 import ArrowDownIcon from '../icons/ArrowDownIcon';
-import '../../styles/variables.css'
+
 
 export type Option = {
   key: string;
@@ -65,10 +65,10 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
 
   useEffect(() => {
     setFilteredOptions(options);
-  }, [options, setFilteredOptions]);
+  }, [options]);
 
   return (
-    <div className={`multi-dropdown-container ${className}`} ref={dropdownRef}>
+    <div className={`${styles.multiDropdown__container} ${className}`} ref={dropdownRef}>
       <Input
         type="text"
         value={value.length ? getTitle(value) : currentInput}
@@ -80,15 +80,15 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({
       />
 
       {isOpen && !disabled && (
-        <div className="multi-dropdown-options">
+        <div className={styles.multiDropdown__options}>
           {filteredOptions.map((option) => (
             <div
               key={option.key}
-              className="multi-dropdown-option-wrapper"
+              className={styles.multiDropdown__option}
               onClick={() => handleOptionClick(option)}
               data-testid={option.key}
             >
-              <Text className="multi-dropdown-option-text">{option.value}</Text>
+              <Text className={styles.multiDropdown__optionText}>{option.value}</Text>
             </div>
           ))}
         </div>

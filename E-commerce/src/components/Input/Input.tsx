@@ -1,8 +1,5 @@
 import React from 'react';
-import './Input.css'; // Подключаем файл стилей
-import '../../styles/variables.css'
-
-
+import styles from './Input.module.scss'; 
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -22,10 +19,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const wrapperClassNames = [
-      'input-wrapper',
+      styles['input-wrapper'], // Используем styles из CSS Modules
       className,
-      disabled ? 'input-disabled' : '',
-      value ? 'input-not-empty' : 'input-empty',
+      disabled ? styles['input-disabled'] : '',
+      value ? styles['input-not-empty'] : styles['input-empty'],
     ]
       .filter(Boolean)
       .join(' ');
@@ -39,11 +36,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           value={value || ''}
           placeholder={placeholder}
           onChange={(e) => onChange(e.target.value)} // Обработчик onChange
-          className="input-element"
+          className={styles['input-element']} // Используем styles из CSS Modules
           disabled={disabled}
         />
         {afterSlot && (
-          <div className="input-after-slot">
+          <div className={styles['input-after-slot']}> {/* Используем styles из CSS Modules */}
             {afterSlot}
           </div>
         )}

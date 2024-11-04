@@ -3,11 +3,9 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import ProductPage from './pages/ProductPage/ProductPage';
-import Header from './components/Header/Header';
+import Header from './pages/components/Header/Header';
 import './styles/null.scss'
-import './styles/styles.css'
-import './styles/variables.css'
-
+import './styles/styles.scss'
 
 function App() {
   return (
