@@ -5,12 +5,15 @@
     height: auto; 
     padding: $space-s $space-m;
     gap: $space-xxs;
-    color: $button-primary-text;
+    color: $base;
     border: none; 
     background-color: $button-primary-bg;
 
-    &:not(.button-disabled):not(.button-loading):hover { /* Применяем hover только к кнопкам, которые не disabled и не loading */
-        background-color: $brand-hover; 
+
+    &.button-loading { 
+        display: flex;
+        align-items: center;
+        padding: 14px $space-m;
     }
 
     &.button-disabled {
@@ -22,9 +25,7 @@
         }
     }
 
-    &.button-loading { 
-        display: flex;
-        align-items: center;
-        padding: 14px $space-m;
+    &:not(.button-disabled):not(.button-loading):hover { /* Применяем hover только к кнопкам, которые не disabled и не loading */
+        background-color: $brand-hover; 
     }
 }

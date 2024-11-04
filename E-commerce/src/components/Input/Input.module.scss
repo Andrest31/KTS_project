@@ -1,38 +1,37 @@
 @import '../../styles/variables';
 
-
-.input-wrapper {
+.dynamicWrapper {
     position: relative;
     display: flex;
     align-items: center;
-    background-color: $base; // Белая заливка
+    background-color: $base;
     padding: 5px 0;
     font-size: $font-size-large;
     border: 1px solid $base;
 
-    &.input-disabled {
+    &.stateDisabled {
         background-color: $disabled-background-color;
-        color: $disabled-text-color;
+        color: $disabled-color;
         cursor: not-allowed;
     }
 
     &:focus-within {
-        border: 1px solid $accent; 
+        border: 1px solid $accent;
     }
 }
 
-.input-element {
+.inputField {
     width: 100%;
-    padding-left: $space-xxs; // Отступ текста от левого края
+    padding-left: $space-xxs;
     height: $input-height;
-    padding: 0 $space-s; // Исходные значения
+    padding: 0 $space-s;
     font-size: $font-size-large;
     border: none;
     outline: none;
     background-color: transparent;
     color: $primary;
     transition: background-color $transition-duration $transition-easing;
-    padding-right: calc($space-s + 20px); // Увеличенный padding для слота
+    padding-right: calc($space-s + 20px);
 
     &::placeholder {
         color: $secondary;
@@ -40,17 +39,25 @@
 
     &:disabled {
         background-color: $disabled-background-color;
-        color: $disabled-text-color;
+        color: $disabled-color;
         opacity: 0.6;
     }
 }
 
-.input-after-slot {
+.slotWrapper {
     position: absolute;
-    right: 14px; 
+    right: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: $icon-color;
-    pointer-events: none; // Иконка не будет интерактивной
+    pointer-events: none;
+}
+
+.filledState {
+    border-color: $highlight;
+}
+
+.emptyState {
+    border-color: $muted;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Input.module.scss'; 
+import styles from './Input.module.scss'; // Обновленное название файла
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -18,29 +18,29 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     { value, onChange, afterSlot, type = 'text', className = '', disabled, placeholder, ...rest },
     ref
   ) => {
-    const wrapperClassNames = [
-      styles['input-wrapper'], // Используем styles из CSS Modules
+    const containerClasses = [
+      styles['dynamicWrapper'],
       className,
-      disabled ? styles['input-disabled'] : '',
-      value ? styles['input-not-empty'] : styles['input-empty'],
+      disabled ? styles['stateDisabled'] : '',
+      value ? styles['filledState'] : styles['emptyState'],
     ]
       .filter(Boolean)
       .join(' ');
 
     return (
-      <div className={wrapperClassNames}>
+      <div className={containerClasses}>
         <input
-          {...rest} // Передаем все остальные пропсы
+          {...rest}
           ref={ref}
           type={type}
           value={value || ''}
           placeholder={placeholder}
-          onChange={(e) => onChange(e.target.value)} // Обработчик onChange
-          className={styles['input-element']} // Используем styles из CSS Modules
+          onChange={(e) => onChange(e.target.value)}
+          className={styles['inputField']}
           disabled={disabled}
         />
         {afterSlot && (
-          <div className={styles['input-after-slot']}> {/* Используем styles из CSS Modules */}
+          <div className={styles['slotWrapper']}>
             {afterSlot}
           </div>
         )}

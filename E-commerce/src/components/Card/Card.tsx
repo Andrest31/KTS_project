@@ -3,7 +3,7 @@ import styles from './Card.module.scss';
 
 import Text from '../Text/Text';
 
-export type CardProps = {
+export type NewCardProps = {
   /** Дополнительный classname */
   className?: string;
   /** URL изображения */
@@ -11,38 +11,38 @@ export type CardProps = {
   /** Слот над заголовком */
   captionSlot?: React.ReactNode;
   /** Заголовок карточки */
-  title: React.ReactNode;
+  heading: React.ReactNode;
   /** Описание карточки */
-  subtitle: React.ReactNode;
+  description: React.ReactNode;
   /** Содержимое карточки (футер/боковая часть), может быть пустым */
-  contentSlot?: React.ReactNode;
+  sectionSlot?: React.ReactNode;
   /** Клик на карточку */
   onClick?: React.MouseEventHandler;
   /** Слот для действия */
   actionSlot?: React.ReactNode;
 };
 
-const Card: React.FC<CardProps> = ({
+const Card: React.FC<NewCardProps> = ({
   className,
   image,
   captionSlot,
-  title,
-  subtitle,
-  contentSlot,
+  heading,
+  description,
+  sectionSlot,
   onClick,
   actionSlot,
 }) => (
-  <div className={`${styles.card} ${className}`}>
-    <img src={image} alt="card-image" className={styles.card__image} onClick={onClick} />
+  <div className={`${styles.container} ${className}`}>
+    <img src={image} alt="card-thumbnail" className={styles.container__thumbnail} onClick={onClick} />
 
-    <div className={styles.card__content}>
-      <div className={styles.card__body} onClick={onClick}>
+    <div className={styles.container__section}>
+      <div className={styles.container__textBlock} onClick={onClick}>
         {captionSlot && <Text tag="p" color="secondary" view="p-14">{captionSlot}</Text>}
-        {title && <Text tag="p" data-testid="text" className={styles.card__title} weight="bold" view="p-20">{title}</Text>}
-        {subtitle && <Text tag="p" data-testid="text" className={styles.card__subtitle} color="secondary" view="p-16">{subtitle}</Text>}
+        {heading && <Text tag="p" data-testid="text" className={styles.container__heading} weight="bold" view="p-20">{heading}</Text>}
+        {description && <Text tag="p" data-testid="text" className={styles.container__subtitle} color="secondary" view="p-16">{description}</Text>}
       </div>
-      <div className={styles.card__button}>
-        {contentSlot && <Text tag="p" weight="bold" view="p-18">{contentSlot}</Text>}
+      <div className={styles.container__controls}>
+        {sectionSlot && <Text tag="p" weight="bold" view="p-18">{sectionSlot}</Text>}
         {actionSlot && <div>{actionSlot}</div>}
       </div>
     </div>

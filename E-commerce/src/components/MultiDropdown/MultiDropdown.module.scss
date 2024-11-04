@@ -1,50 +1,42 @@
 @import '../../styles/variables';
 
-.multiDropdown {
+.customDropdownContainer {
   position: relative;
   width: 100%;
+}
 
-  &__container {
-    position: relative;
-    width: 100%;
-  }
+.customDropdownOptions {
+  margin-top: 8px;
+  width: 100%;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: $base;
+  border: 1px solid $border-color;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+}
 
-  &__options {
-    margin-top: 8px;
-    width: 100%;
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: $base;
-    border: 1px solid $border-color;
-    max-height: 150px;
-    overflow-y: auto;
-    z-index: 10;
-  }
+.customDropdownOption {
+  padding: 14px 12px;
+  height: 48px;
+  font-family: $font-family;
+  cursor: pointer;
+  color: $primary;
+  font-size: $font-size;
+  transition: background-color $transition-duration $transition-easing;
+}
 
-  &__option {
-    padding: 14px 12px;
-    height: 48px;
-    font-family: $font-family;
-    cursor: pointer;
+.customDropdownOptionText {
+  color: $secondary;
+
+  &:hover {
     color: $primary;
-    font-size: $font-size;
-    transition: background-color $transition-duration $transition-easing;
-
-   
   }
 
-  &__optionText {
-    color: $secondary;
-
-
-    &:hover {
-      color: $primary;
-    }
-
-    &.selected {
-      color: $accent;
-    }
+  &.selected {
+    color: $accent;
   }
 }
