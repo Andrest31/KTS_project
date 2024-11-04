@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Card from '../../components/Card';
 import Input from '../../components/Input';
 import MultiDropdown from '../../components/MultiDropdown';
-import Loader from '../../components/Loader'; // Импортируем Loader
+import Loader from '../../components/Loader';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
 import ArrowDownIcon from '../../components/icons/ArrowDownIcon';
@@ -27,22 +27,29 @@ const MainPage: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://api.escuelajs.co/api/v1/products');
-        setProducts(response.data.slice(0, 9));
+        const response = await axios.get('https://api.escuelajs.co/api/v1/products', {
+          params: {
+            offset: 0,
+            limit: 9,
+          }
+        });
+        console.log('Products fetched from server:', response.data); // выводим данные в консоль
+        console.log('Number of products:', response.data.length); // выводим количество карточек
+        setProducts(response.data);
       } catch (error) {
         setError('Не удалось загрузить данные');
       } finally {
         setLoading(false);
       }
     };
+    
 
     fetchProducts();
   }, []);
 
-  // Условный рендеринг загрузчика
   if (loading) {
     return (
-      <div className="loader-container"> {/* Новый класс для центрирования загрузчика */}
+      <div className="loader-container">
         <Loader size="l" color="#518581" />
       </div>
     );
@@ -85,7 +92,7 @@ const MainPage: React.FC = () => {
           />
         </div>
       </div>
-    
+
       <div className="main-page__catalog">
         <Text tag="h1" view="title" className="page-title" weight="bold">
           Total Product

@@ -1,18 +1,10 @@
 {
-  "name": "kts-project",
-  "version": "1.0.0",
-  "description": "Project for 3-5 KTS homeworks",
-  "main": "index.js",
-  "repository": "https://github.com/Andrest31/KTS_project.git",
-  "author": "Andrest31",
-  "license": "MIT",
-  "private": true,
   "dependencies": {
     "axios": "^1.7.7",
-    "react": "^18.3.1",
     "react-router-dom": "^6.27.0"
   },
   "devDependencies": {
-    "eslint": "^9.13.0"
+    "@types/react-router-dom": "^5.3.3",
+    "sass-embedded": "^1.80.5"
   }
 }

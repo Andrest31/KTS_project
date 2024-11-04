@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import '../../App.css';
 
 interface Product {
   id: number;
@@ -35,17 +36,24 @@ const InfoPage: React.FC = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div>
-      {product ? (
-        <>
-          <h1>{product.title}</h1>
-          <img src={product.images[0]} alt={product.title} style={{ width: '80%', maxWidth: '600px' }} /> {/* Увеличенный размер изображения */}
-          <p>Цена: ${product.price}</p>
-          <p>{product.description}</p>
-        </>
-      ) : (
-        <p>Продукт не найден</p>
-      )}
+    <div className="info-page">
+      <header className="main-page__header">
+        <h1>HELLO55</h1>
+      </header>
+      <div className="Infopage__content">
+        {product ? (
+          <div className="product-detail">
+            <img src={product.images[0]} alt={product.title} className="product-detail__image" />
+            <div className="product-detail__info">
+              <h1>{product.title}</h1>
+              <p>Цена: ${product.price}</p>
+              <p>{product.description}</p>
+            </div>
+          </div>
+        ) : (
+          <p>Продукт не найден</p>
+        )}
+      </div>
     </div>
   );
 };
