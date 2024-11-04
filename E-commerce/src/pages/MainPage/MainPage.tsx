@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import axios from 'axios';
 import Loader from 'components/Loader';
 import Text from 'components/Text/Text';
@@ -9,8 +10,8 @@ import Card from 'components/Card';
 import ArrowSiteIcon from 'components/icons/ArrowSite/ArrowSite';
 import { useNavigate } from 'react-router-dom';
 import { handleCardClick } from 'utils/navigationUtils';
-import styles from './HomePage.module.scss';
-import '../../styles/styles.scss'
+import styles from './MainPage.module.scss';
+import '../../styles/styles.scss';
 
 export interface ProductI {
   id: number;
@@ -21,7 +22,20 @@ export interface ProductI {
   category: { name: string };
 }
 
-const HomePage: React.FC = () => {
+// Анимационные параметры
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const cardHover = { scale: 1.05 };
+
+const MainPage: React.FC = () => {
   const navigate = useNavigate();
   const [products, setProducts] = useState<ProductI[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -39,7 +53,6 @@ const HomePage: React.FC = () => {
         params: { offset: (page - 1) * productsPerPage, limit: productsPerPage },
       });
       setProducts(response.data);
-
       const totalResponse = await axios.get('https://api.escuelajs.co/api/v1/products', { params: { limit: 0 } });
       setTotalProducts(totalResponse.data.length);
     } catch (error) {
@@ -78,15 +91,15 @@ const HomePage: React.FC = () => {
       <div className='page__loader _container'>
         <Loader />
       </div>
-      </main>
+    </main>
   );
   if (error) return <div className={styles['error-message']}>{error}</div>;
 
   return (
     <main id="main" className='page'>
       <div className={`${styles['page__main-block']} _container`}>
-        <div className={styles['products__content']}>
-          <div className={styles['products__header']}>
+        <motion.div className={styles['products__content']} variants={staggerContainer} initial="hidden" animate="visible">
+          <motion.div className={styles['products__header']} variants={fadeIn}>
             <div className={styles['products__title']}>
               <Text view="title">Products</Text>
             </div>
@@ -95,13 +108,14 @@ const HomePage: React.FC = () => {
                 We display products based on the latest products we have. If you want to see our old products, please enter the name of the item.
               </Text>
             </div>
-          </div>
+          </motion.div>
+
           <div className={styles['products__controls']}>
             <div className={styles['products__search']}>
               <div className={styles['products__search-column--left']}>
                 <Input value={searchValue} onChange={setSearchValue} placeholder="Search product" />
               </div>
-              <Button  width='137px' className={styles['products__search-column--right']}>Find now</Button>
+              <Button width='137px' className={styles['products__search-column--right']}>Find now</Button>
             </div>
             <div className={styles['products__filter']}>
               <MultiDropdown
@@ -112,28 +126,31 @@ const HomePage: React.FC = () => {
               />
             </div>
           </div>
-          <div className={styles['products__body']}>
-            <div className={styles['products__subtitle']}>
+
+          <motion.div className={styles['products__body']} variants={staggerContainer}>
+            <motion.div className={styles['products__subtitle']} variants={fadeIn}>
               <Text view="p-32" className="page-title" weight="bold">Total Products</Text>
               <Text view="p-20" color="accent" weight="bold">{totalProducts}</Text>
-            </div>
+            </motion.div>
+
             <section className={`${styles['products__cards']} _cards`}>
               {products.map((product) => (
-                <div className={styles['products__column']} key={product.id}>
+                <motion.div className={styles['products__column']} key={product.id} whileHover={cardHover} variants={fadeIn}>
                   <Card
                     image={product.images[0]}
                     title={product.title}
                     subtitle={product.description}
                     captionSlot={product.category.name}
-                    contentSlot={`$${product.price}`}
+                    contentSlot={`${product.price}`}
                     actionSlot={<Button>Add to Cart</Button>}
                     className={styles['products__card']}
                     onClick={() => handleCardClick(product, products, navigate)}
                   />
-                </div>
+                </motion.div>
               ))}
             </section>
-          </div>
+          </motion.div>
+          
           <div className={styles['products__pagination']}>
             <div onClick={() => handlePageChange(currentPage > 1 ? currentPage - 1 : 1)}>
               <ArrowSiteIcon color={currentPage > 1 ? 'primary' : 'secondary'} />
@@ -155,10 +172,10 @@ const HomePage: React.FC = () => {
               <ArrowSiteIcon direction="right" color={currentPage + 1 <= totalPages ? 'primary' : 'secondary'} />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </main>
   );
 };
 
-export default HomePage;
+export default MainPage;

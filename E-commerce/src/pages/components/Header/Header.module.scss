@@ -43,6 +43,9 @@
     }
   
     &__icons {
+      & svg{
+      cursor: pointer;
+      }
       display: flex;
       gap: 32px;
       z-index: 3;

@@ -1,8 +1,5 @@
 @import '../../styles/variables';
 
-
-
-
 .products{
     &__content {
         padding-top: 100px;
@@ -46,8 +43,6 @@
         padding-bottom: 30px;
     }
     
-    
-    
     &__column {
         display: flex;
         justify-content: center;
@@ -62,13 +57,16 @@
     &__search {
         display: flex;
         gap: $space-xl;
-    }
+        width: 100%; // Обеспечиваем ширину на весь контейнер
+      }
     
     &__search-column--left {
         flex: 1;
     }
     
-    
+    &__search-column--right {
+        width: auto; // Подгоняем кнопку поиска под размер текста
+      }
     
     &__filter {
         width: 300px;

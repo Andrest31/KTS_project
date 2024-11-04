@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import Logo from 'components/Logo/Logo';
@@ -7,12 +7,6 @@ import Cart from 'components/icons/CartIcon/Cart';
 import User from 'components/icons/User/User';
 
 const Header: React.FC = () => {
-  const [activeItem, setActiveItem] = useState<string>('Product');
-
-  const handleItemClick = (item: string) => {
-    setActiveItem(item);
-  };
-
   return (
     <header className={styles.header}>
       <div className={`${styles.header__container} _container`}>
@@ -23,32 +17,23 @@ const Header: React.FC = () => {
         </div>
 
         <nav className={styles.header__menu}>
-            <ul className={styles.menu__list}>
-                <li
-                    className={`${styles.menu__item} ${activeItem === 'Product' ? styles.active : ''}`}
-                    onClick={() => handleItemClick('Product')}
-                >
-                    <Text tag="p" view="p-18" weight={activeItem === 'Product' ? '600' : undefined}>
-                        Product
-                    </Text>
-                </li>
-                <li
-                    className={`${styles.menu__item} ${activeItem === 'Categories' ? styles.active : ''}`}
-                    onClick={() => handleItemClick('Categories')}
-                >
-                    <Text tag="p" view="p-18" weight={activeItem === 'Categories' ? '600' : undefined}>
-                        Categories
-                    </Text>
-                </li>
-                <li
-                    className={`${styles.menu__item} ${activeItem === 'About us' ? styles.active : ''}`}
-                    onClick={() => handleItemClick('About us')}
-                >
-                    <Text tag="p" view="p-18" weight={activeItem === 'About us' ? '600' : undefined}>
-                        About us
-                    </Text>
-                </li>
-            </ul>
+          <ul className={styles.menu__list}>
+            <li className={`${styles.menu__item} ${styles.active}`}>
+              <Text tag="p" view="p-18" weight="600">
+                Product
+              </Text>
+            </li>
+            <li className={styles.menu__item}>
+              <Text tag="p" view="p-18">
+                Categories
+              </Text>
+            </li>
+            <li className={styles.menu__item}>
+              <Text tag="p" view="p-18">
+                About us
+              </Text>
+            </li>
+          </ul>
         </nav>
 
         <div className={styles.header__icons}>

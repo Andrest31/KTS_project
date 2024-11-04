@@ -1,12 +1,14 @@
+// ProductScreen.module.scss
 @import '../../styles/variables';
-.page__product {
+
+.page__details {
   padding-top: 60px;
   display: flex;
   flex-direction: column;
   padding-bottom: 146px;
 }
 
-._container-product {
+._container-details {
   max-width: 1301px;
   height: 1346px;
   margin: 0 auto;
@@ -14,50 +16,29 @@
   padding-bottom: 144px;
 }
 
-.product__button-container {
+.details__button-wrap {
   width: 100%;
   display: flex;
-  justify-content: flex-start; /* Выровнять кнопку по левому краю */
+  justify-content: flex-start;
 }
 
-.product__button_back {
+.details__button_back {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 129px;
   height: 48px;
+  cursor: pointer;
   text-align: start;
 }
 
-.product__content {
+.details__content {
   display: flex;
   flex-direction: column;
   gap: $space-xxl;
 }
 
-.product__card {
-  height: 600px;
-}
-
-.product__related-cards {
-  display: flex;
-  flex-direction: column;
-  gap: $space-xl;
-}
-
-.product__text-container {
-  display: flex;
-  flex-direction: column;
-  gap: $space-xl;
-}
-
-.product__text_title {
-  display: flex;
-  flex-direction: column;
-  gap: $space-xl;
-}
-
-.product__wrapper {
+.details__layout {
   padding-top: $space-xxl;
   display: flex;
   gap: $space-xxl;
@@ -65,14 +46,14 @@
   width: 1301px;
 }
 
-.product__image-slider {
+.details__image-carousel {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.product__slider-button {
+.details__carousel-control {
   position: absolute;
   width: 64px;
   height: 64px;
@@ -86,27 +67,28 @@
   cursor: pointer;
   transition: opacity 0.3s;
   top: 50%;
-  transform: translateY(-50%); /* Центрирование по вертикали */
+  transform: translateY(-50%);
 }
 
-.slider-button-left {
+.carousel-left {
   left: $space-xl; 
 }
 
-.slider-button-right {
+.carousel-right {
   right: $space-xl; 
 }
 
-.product__slider-button-disabled {
+.details__carousel-disabled {
   opacity: 0.6; 
 }
 
-.product__image {
+.details__image {
   flex: 0 0 auto;
   min-width: 600px;
+  min-height: 600px;
 }
 
-.product__price {
+.details__cost {
   width: 338px;
   height: 180px;
   display: flex;
@@ -114,7 +96,7 @@
   gap: $space-xxl;
 }
 
-.product__buttons {
+.details__actions {
   width: 100%;
   height: 52px;
   display: flex;
@@ -125,4 +107,10 @@
   color: $primary;
   background-color: $font;
   border: 1px solid $secondary;
+}
+
+.details__related {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xl;
 }
