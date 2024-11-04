@@ -1,0 +1,39 @@
+
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+._container {
+  max-width: 1240px;
+  margin: 0px auto;
+  box-sizing: content-box;
+}
+
+.page {
+  min-height: 100vh;
+  height: auto;
+  /* width: 1440px;
+  margin: 90px auto 0px auto; */
+  padding-top: 90px;
+  background-color: var(--font);
+
+  &__loader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+  }
+} 
+._cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(360px, 1fr));
+  grid-template-rows: repeat(auto-fill, 1fr);
+  gap: 30px 80px;
+  justify-content: center;
+}

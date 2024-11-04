@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage/HomePage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import Header from './pages/components/Header/Header';
-import './styles/null.scss'
 import './styles/styles.scss'
 
 function App() {

@@ -4,7 +4,7 @@ import styles from './Header.module.scss';
 import Logo from 'components/Logo/Logo';
 import Text from 'components/Text/Text';
 import Cart from 'components/icons/CartIcon/Cart';
-import User from 'components/User/User';
+import User from 'components/icons/User/User';
 
 const Header: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>('Product');
