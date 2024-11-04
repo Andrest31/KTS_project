@@ -28,7 +28,7 @@
     height: 48px;
     font-family: $font-family;
     cursor: pointer;
-    color: $text-primary-color;
+    color: $primary;
     font-size: $font-size;
     transition: background-color $transition-duration $transition-easing;
 
@@ -36,15 +36,15 @@
   }
 
   &__optionText {
-    color: $text-secondary;
+    color: $secondary;
 
 
     &:hover {
-      color: $text-primary;
+      color: $primary;
     }
 
     &.selected {
-      color: $text-accent;
+      color: $accent;
     }
   }
 }

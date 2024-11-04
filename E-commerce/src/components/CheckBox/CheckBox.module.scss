@@ -6,13 +6,13 @@
 body {
   font-family: $font-family;
   background-color: $background-color;
-  color: $text-primary-color;
+  color: $primary;
   margin: 0;
   padding: 0;
 }
 
 h1, h2, h3 {
-  color: $text-primary-color;
+  color: $primary;
 }
 
 .checkbox {
@@ -49,7 +49,7 @@ h1, h2, h3 {
 
   /* Рамка при клике, если чекбокс не отключен */
   &__label:active &__custom {
-    outline: 2px solid $primary-color; /* Цвет рамки при клике */
+    outline: 2px solid $primary; /* Цвет рамки при клике */
   }
 
   /* Убираем рамку при наведении на отключенный чекбокс */
@@ -64,7 +64,7 @@ h1, h2, h3 {
 
   /* Цвет галочки при активном состоянии */
   &__input:checked + &__custom::after {
-    border-color: $primary-color; /* Галочка цвета primary_color при checked */
+    border-color: $primary; /* Галочка цвета primary_color при checked */
   }
 
   /* Цвет галочки при отключенном состоянии */
@@ -96,14 +96,14 @@ h1, h2, h3 {
 }
 
 .input {
-  border: 1px solid $primary-color;
+  border: 1px solid $primary;
   border-radius: $border-radius-medium;
   height: $input-height;
   padding: $spacing-small;
 }
 
 button {
-  background-color: $accent-color;
+  background-color: $accent;
   color: $background-color;
   padding: $spacing-xlarge;
   border: none;

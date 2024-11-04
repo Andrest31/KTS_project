@@ -30,12 +30,12 @@
     border: none;
     outline: none;
     background-color: transparent;
-    color: $text-primary-color;
+    color: $primary;
     transition: background-color $transition-duration $transition-easing;
     padding-right: calc($space-s + 20px); // Увеличенный padding для слота
 
     &::placeholder {
-        color: $text-secondary-color;
+        color: $secondary;
     }
 
     &:disabled {

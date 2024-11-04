@@ -3,10 +3,6 @@ $primary: rgba(0, 0, 0, 1);
 $secondary: rgba(175, 173, 181, 1); 
 $accent: rgba(81, 133, 129, 1);  
 
-$text-primary: rgba(0, 0, 0, 1);  
-$text-secondary: rgba(175, 173, 181, 1); 
-$text-accent: rgba(81, 133, 129, 1);  
-
 
 $base:rgba(255, 255, 255, 1);
 $card:rgba(255, 255, 255, 1);
@@ -21,8 +17,6 @@ $button-primary-bg-disabled: rgba(217, 217, 217, 1);
 $disabled-background-color: #ffffff;
 $disabled-text-color: rgba(175, 173, 181, 1);
 
-$text-primary-color: #333333;
-$text-secondary-color: #a0a0a0;
 $background-color: rgba(236, 235, 235, 1);
 $border-color: #ccc;
 $hover-background-color: rgba(175, 173, 181, 1);
@@ -32,6 +26,7 @@ $disabled-text-color: rgba(175, 173, 181, 1);
 $icon-color: #999999;
 $error-color: #ff4d4f;
 
+$loader-animation-duration: 1s;
 $text-color: rgba(0, 0, 0, 1);
 $font-family: 'Roboto', sans-serif;
 
@@ -41,12 +36,6 @@ $space-xxs:8px;
 $space-xs: 12px;
 $space-s: 16px;
 $space-m: 20px;
-
-
-$loader-animation-duration: 1s;
-
-
-
 
  /* Шрифты */
 
