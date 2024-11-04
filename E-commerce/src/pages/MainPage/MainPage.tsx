@@ -137,11 +137,11 @@ const MainPage: React.FC = () => {
               {products.map((product) => (
                 <motion.div className={styles['products__column']} key={product.id} whileHover={cardHover} variants={fadeIn}>
                   <Card
-                    image={product.images[0]}
+                    image={product.images[0] || 'C:/Users/Andresh/Desktop/KTS_project/E-commerce/src/components/_YSmr95v57I.jpg'} // Замените на реальный URL изображения по умолчанию
                     title={product.title}
                     subtitle={product.description}
                     captionSlot={product.category.name}
-                    contentSlot={`${product.price}`}
+                    contentSlot={`$${product.price}`}
                     actionSlot={<Button>Add to Cart</Button>}
                     className={styles['products__card']}
                     onClick={() => handleCardClick(product, products, navigate)}
